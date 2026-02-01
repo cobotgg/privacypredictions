@@ -253,50 +253,6 @@ console.log('Amount hidden:', result.amount_hidden); // true
 
 ---
 
-### LI.FI - Cross-Chain DEX Aggregator
-
-LI.FI provides cross-chain swaps with best execution across 15+ chains and 30+ DEXs.
-
-**How It Works:**
-
-1. **Quote**: Get best route across all connected chains/DEXs
-2. **Execute**: Single transaction executes the entire route
-3. **Track**: Monitor swap progress until completion
-
-**Integration Code:**
-
-```typescript
-import { createConfig, getQuote, executeRoute } from '@lifi/sdk';
-
-// Initialize LI.FI SDK
-createConfig({
-  integrator: 'cobot-privacy-trading',
-  apiKey: process.env.LIFI_API_KEY,
-});
-
-// Get cross-chain quote
-const quote = await getQuote({
-  fromChain: 'SOL',
-  toChain: 'BASE',
-  fromToken: 'USDC',
-  toToken: 'ETH',
-  fromAmount: '1000000000', // 1000 USDC (6 decimals)
-  fromAddress: solanaWallet,
-  toAddress: evmWallet,
-});
-
-// Execute the swap
-const result = await executeRoute(quote, {
-  updateRouteHook: (route) => {
-    console.log('Status:', route.execution?.status);
-  },
-});
-```
-
-**Supported Chains:** Solana, Ethereum, Base, Polygon, Arbitrum, BSC, Optimism, Avalanche
-
----
-
 ### SilentSwap - Privacy Cross-Chain Bridge
 
 SilentSwap provides privacy-preserving cross-chain transfers that break the link between source and destination chains.
@@ -700,33 +656,6 @@ curl http://localhost:3001/api/transfer/pool/scan
 
 # Recover funds from specific wallet
 curl -X POST http://localhost:3001/api/transfer/recover/pool/WALLET_ID
-```
-
----
-
-## Contributing
-
-We welcome contributions! Please follow these guidelines:
-
-1. **No sensitive data** - Never commit keys or credentials
-2. **Document changes** - Update README for new features
-3. **Test thoroughly** - Ensure all tests pass
-4. **Privacy-first** - Maintain privacy guarantees
-
-### Development Setup
-
-```bash
-# Fork and clone
-git clone https://github.com/your-fork/cobot.git
-
-# Create feature branch
-git checkout -b feature/my-feature
-
-# Make changes and test
-npm run test
-
-# Submit PR
-git push origin feature/my-feature
 ```
 
 ---
