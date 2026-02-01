@@ -1,0 +1,18 @@
+[package]
+name = "zk-verifier-native"
+version = "0.1.0"
+description = "Native Solana program for on-chain ZK proof verification with Groth16"
+edition = "2021"
+
+[workspace]
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[features]
+no-entrypoint = []
+
+[dependencies]
+solana-program = "1.18"
+borsh = "0.10"
+groth16-solana = "0.0.3"

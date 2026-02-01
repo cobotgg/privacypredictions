@@ -1,0 +1,16 @@
+{
+  "name": "ai-response-verifier-groth16",
+  "version": "1.0.0",
+  "description": "Groth16 circuit for AI response verification",
+  "scripts": {
+    "setup": "node setup.js",
+    "compile": "circom ai_response_verifier.circom --r1cs --wasm --sym -o build",
+    "setup:ptau": "node setup-ptau.js",
+    "setup:keys": "node setup-keys.js",
+    "test": "node test-circuit.js"
+  },
+  "dependencies": {
+    "circomlib": "^2.0.5",
+    "snarkjs": "^0.7.4"
+  }
+}

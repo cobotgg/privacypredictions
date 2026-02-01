@@ -1,0 +1,7 @@
+[package]
+name = "obsidian_batch_verifier"
+type = "bin"
+authors = ["Privacy Trading Team"]
+compiler_version = ">=1.0.0"
+
+[dependencies]

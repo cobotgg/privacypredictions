@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+body {
+  @apply bg-gray-950 text-gray-100 font-sans antialiased;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Dark scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #525252;
+}
+
+/* Wallet adapter overrides - dark style */
+.wallet-adapter-button {
+  @apply bg-white text-gray-900 font-sans font-medium text-sm px-4 py-2 rounded transition-colors !important;
+}
+
+.wallet-adapter-button:hover {
+  @apply bg-gray-200 !important;
+}
+
+.wallet-adapter-modal-wrapper {
+  @apply font-sans;
+}
+
+.wallet-adapter-modal-title {
+  @apply text-white font-semibold;
+}
+
+/* Focus states */
+input:focus, button:focus {
+  @apply outline-none ring-2 ring-white ring-offset-2 ring-offset-gray-900;
+}
+
+/* Smooth transitions */
+*, *::before, *::after {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
