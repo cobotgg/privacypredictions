@@ -30,13 +30,13 @@ Building privacy infrastructure for prediction markets and autonomous trading ag
 | Sponsor | Bounty | Prize Pool | Our Integration |
 |---------|--------|------------|-----------------|
 | **Radr Labs** | Private Transfers with ShadowWire | $15,000 | ZK shielded transfers using Bulletproof range proofs for wallet unlinkability ([backend/src/services/shadowwire.ts](backend/src/services/shadowwire.ts)) |
-| **Privacy Cash** | Best Integration to Existing App | $15,000 | Alternative privacy provider using Light Protocol compressed transactions for shielded pool transfers ([backend/src/services/privacy-cash.ts](backend/src/services/privacy-cash.ts)) |
-| **Arcium** | End-to-End Private DeFi | $10,000 | MPC encryption for prediction market orders - client-side x25519 encryption, encrypted batch execution, on-chain verification ([backend/src/services/arcium-client.ts](backend/src/services/arcium-client.ts), [frontend/src/lib/arcium-encrypt.ts](frontend/src/lib/arcium-encrypt.ts)) |
+| **Privacy Cash** | Best Integration to Existing App | $15,000 | shielded pool transfers ([backend/src/services/privacy-cash.ts](backend/src/services/privacy-cash.ts)) |
+| **Arcium** | End-to-End Private DeFi | $10,000 | MPC encryption for Agent strategies, questions & more - client-side x25519 encryption, encrypted batch execution, on-chain verification ([backend/src/services/arcium-client.ts](backend/src/services/arcium-client.ts), [frontend/src/lib/arcium-encrypt.ts](frontend/src/lib/arcium-encrypt.ts)) |
 | **Aztec** | ZK with Noir | $10,000 | Noir ZK circuits for AI agent response verification - proves AI responses are generated from actual queries without tampering ([backend/circuits/ai_response_verifier/src/main.nr](backend/circuits/ai_response_verifier/src/main.nr), [backend/src/services/noir-prover.ts](backend/src/services/noir-prover.ts)) |
 | **SilentSwap** | Private Cross-Chain Transfers | $5,000 | Privacy-preserving cross-chain bridge for Solana ↔ EVM transfers with no on-chain link ([backend/src/services/silentswap.ts](backend/src/services/silentswap.ts)) |
 | **Helius** | Best Privacy Project with Helius | $5,000 | Primary RPC provider for high-performance Solana connectivity ([backend/src/services/rpc-provider.ts](backend/src/services/rpc-provider.ts)) |
 | **Starpay** | Privacy-Focused Payments | $3,500 | Prepaid Visa/Mastercard issuance for cashing out trading winnings to physical cards ([backend/src/routes/cards.ts](backend/src/routes/cards.ts), [frontend/src/components/cards/CardOrder.tsx](frontend/src/components/cards/CardOrder.tsx)) |
-| **Quicknode** | Public Benefit Prize | $3,000 | Secondary RPC provider in multi-provider failover system for high availability ([backend/src/services/rpc-provider.ts](backend/src/services/rpc-provider.ts)) |
+| **Quicknode** | Public Benefit Prize | $3,000 |  RPC provider in multi-provider failover system for high availability ([backend/src/services/rpc-provider.ts](backend/src/services/rpc-provider.ts)) |
 | **Range** | Compliant Privacy | $1,500+ | OFAC/AML pre-screening before all privacy transfers to ensure compliance ([backend/src/services/range.ts](backend/src/services/range.ts)) |
 
 ---
@@ -742,10 +742,16 @@ MIT License - see [LICENSE](LICENSE) for details.
 Built with support from:
 
 - **Solana Foundation** - Privacy Hackathon
-- **Radr Labs** - ShadowWire ZK infrastructure
-- **LI.FI** - Cross-chain DEX aggregation
-- **Range Security** - Compliance infrastructure
-- **Phantom** - Wallet SDK
+- **Radr Labs** - ShadowWire ZK shielded transfers with Bulletproof range proofs
+- **Privacy Cash** - Light Protocol compressed transactions for privacy pools
+- **Arcium** - MPC encryption for confidential order execution
+- **Aztec** - Noir ZK circuits for AI agent response verification
+- **SilentSwap** - Privacy-preserving cross-chain bridge
+- **Helius** - High-performance Solana RPC
+- **Quicknode** - RPC failover infrastructure
+- **Starpay** - Prepaid card issuance for cashouts
+- **Range** - OFAC/AML compliance screening
+- **Phantom** - Wallet SDK integration
 - **DFlow** - Prediction market access
 
 ---
