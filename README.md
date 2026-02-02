@@ -45,7 +45,7 @@ Building privacy infrastructure for prediction markets and autonomous trading ag
 
 ## 📬 Contact
 
-**Telegram:** @cobotgg
+**Telegram:** @ravalicobot
 
 ---
 
@@ -134,6 +134,12 @@ Cobot provides a complete privacy stack that breaks all on-chain links:
 - **Range Protocol**: Pre-transaction OFAC/AML screening
 - **Risk Scoring**: Low/Medium/High/Severe risk classification
 - **Automatic Blocking**: Prevents transactions with sanctioned addresses
+
+### On-Chain Attestation
+- **AI Response Attestation**: Tamper-proof on-chain records of AI market analysis via Light Protocol ZK compression
+- **Encrypted Predictions**: Store prediction hashes on-chain with immutable timestamp proofs
+- **Groth16 Proofs**: Cryptographic verification of AI responses without revealing content
+- **Verifiable via Solana Explorer**: All attestations queryable via Photon indexer
 
 ---
 
@@ -396,6 +402,111 @@ const order = await fetch('/api/trading/order', {
   }),
 });
 ```
+
+---
+
+### Privacy Cash - Shielded Pool Transfers
+
+Privacy Cash enables shielded pool transfers for anonymous transactions.
+
+**How It Works:**
+
+1. **Deposit**: User deposits funds into the shielded pool
+2. **Shield**: Funds are mixed in the privacy pool
+3. **Withdraw**: Withdraw to any wallet without on-chain link
+
+**Integration:** `backend/src/services/privacy-cash.ts`
+
+---
+
+### Arcium - MPC Encryption for DeFi
+
+Arcium provides end-to-end MPC encryption for agent strategies and sensitive data.
+
+**How It Works:**
+
+1. **Client Encryption**: x25519 encryption on the client side
+2. **Encrypted Execution**: Batch execution with encrypted parameters
+3. **On-Chain Verification**: Verify encrypted results on-chain
+
+**Integration:** `backend/src/services/arcium-client.ts`, `frontend/src/lib/arcium-encrypt.ts`
+
+---
+
+### Aztec (Noir) - ZK Circuit Verification
+
+Noir ZK circuits for AI agent response verification.
+
+**How It Works:**
+
+1. **Circuit Definition**: Define ZK circuit in Noir
+2. **Proof Generation**: Generate Groth16 proof of valid AI response
+3. **On-Chain Verification**: Verify proof on Solana
+
+**Integration:** `backend/circuits/ai_response_verifier/src/main.nr`, `backend/src/services/noir-prover.ts`
+
+---
+
+### Helius - High-Performance RPC
+
+Helius provides primary RPC connectivity for high-performance Solana operations.
+
+**Integration:** `backend/src/services/rpc-provider.ts`
+
+---
+
+### Starpay - Privacy-Focused Payments
+
+Starpay enables prepaid Visa/Mastercard issuance for cashing out trading winnings.
+
+**How It Works:**
+
+1. **Order Card**: Request a prepaid card with USDC
+2. **Card Issued**: Virtual or physical card delivered
+3. **Spend**: Use card anywhere Visa/Mastercard is accepted
+
+**Integration:** `backend/src/routes/cards.ts`, `frontend/src/components/cards/CardOrder.tsx`
+
+---
+
+### QuickNode - RPC Failover
+
+QuickNode provides backup RPC in the multi-provider failover system.
+
+**Integration:** `backend/src/services/rpc-provider.ts`
+
+---
+
+### Inco Network - Confidential Apps (TEE Encryption)
+
+Inco provides TEE encryption for confidential predictions using Inco Lightning.
+
+**How It Works:**
+
+1. **Encrypt Prediction**: User's prediction is encrypted using Inco TEE
+2. **Store On-Chain**: Encrypted prediction hash stored via Light Protocol
+3. **Reveal**: Predictions reveal only on market resolution or payment
+
+**Integration:** `backend/src/services/encrypted-calls.ts`
+
+---
+
+### Light Protocol - ZK Compression
+
+Light Protocol provides ZK compression for on-chain attestations and prediction storage.
+
+**How It Works:**
+
+1. **Compress**: Data is compressed using Groth16 proofs
+2. **Store**: Only state root (32 bytes) stored on-chain
+3. **Verify**: Full data verified via Photon indexer
+
+**Features:**
+- Encrypted prediction hash storage with immutable timestamps
+- AI response attestations for tamper-proof market analysis
+- Near-zero on-chain storage cost
+
+**Integration:** `backend/src/services/light-attestation.ts`, `backend/src/services/encrypted-calls.ts`
 
 ---
 
