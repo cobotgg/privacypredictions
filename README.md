@@ -793,6 +793,8 @@ Built with support from:
 - **Quicknode** - RPC failover infrastructure
 - **Starpay** - Prepaid card issuance for cashouts
 - **Range** - OFAC/AML compliance screening
+- **Inco Network** - TEE encryption for confidential predictions
+- **Light Protocol** - ZK compression for on-chain attestations
 - **Phantom** - Wallet SDK integration
 - **DFlow** - Prediction market access
 
