@@ -38,6 +38,8 @@ Building privacy infrastructure for prediction markets and autonomous trading ag
 | **Starpay** | Privacy-Focused Payments | $3,500 | Prepaid Visa/Mastercard issuance for cashing out trading winnings to physical cards ([backend/src/routes/cards.ts](backend/src/routes/cards.ts), [frontend/src/components/cards/CardOrder.tsx](frontend/src/components/cards/CardOrder.tsx)) |
 | **Quicknode** | Public Benefit Prize | $3,000 |  RPC provider in multi-provider failover system for high availability ([backend/src/services/rpc-provider.ts](backend/src/services/rpc-provider.ts)) |
 | **Range** | Compliant Privacy | $1,500+ | OFAC/AML pre-screening before all privacy transfers to ensure compliance ([backend/src/services/range.ts](backend/src/services/range.ts)) |
+| **Inco** | Best Confidential Apps | $6,000 | TEE encryption for confidential predictions using Inco Lightning - encrypted calls that reveal only on market resolution or payment ([backend/src/services/encrypted-calls.ts](backend/src/services/encrypted-calls.ts)) |
+| **Light Protocol** | ZK Compression | $3,000 | On-chain ZK compression for: (1) Encrypted prediction hash storage with immutable timestamp proofs ([backend/src/services/encrypted-calls.ts](backend/src/services/encrypted-calls.ts)), (2) AI response attestations - tamper-proof on-chain records of AI market analysis via Groth16 proofs ([backend/src/services/light-attestation.ts](backend/src/services/light-attestation.ts), [backend/src/routes/attestation.ts](backend/src/routes/attestation.ts)) |
 
 ---
 

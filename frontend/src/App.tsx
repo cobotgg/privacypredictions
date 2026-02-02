@@ -10,6 +10,7 @@ import { PositionList } from './components/position/PositionList';
 import { MarketResearchAnalyst } from './components/ai/MarketResearchAnalyst';
 import { CardOrder } from './components/cards/CardOrder';
 import { TransferMethodSelector } from './components/transfer/TransferMethodSelector';
+import { CallsList } from './components/calls/CallsList';
 
 function WelcomeScreen() {
   const { open } = useModal();
@@ -82,7 +83,7 @@ function Dashboard() {
   const [solBalance, setSolBalance] = useState<number | null>(null);
   const [usdcBalance, setUsdcBalance] = useState<number | null>(null);
   const [privacyMode, setPrivacyMode] = useState(false);
-  const [activeSection, setActiveSection] = useState<'markets' | 'positions' | 'transfer' | 'cashout' | 'advanced'>('markets');
+  const [activeSection, setActiveSection] = useState<'markets' | 'positions' | 'calls' | 'transfer' | 'cashout' | 'advanced'>('markets');
 
   const USDC_MINT = 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v';
 
@@ -169,6 +170,7 @@ function Dashboard() {
         {[
           { key: 'markets', label: 'Markets' },
           { key: 'positions', label: 'Positions' },
+          { key: 'calls', label: 'Calls' },
           { key: 'transfer', label: 'Transfer' },
           { key: 'cashout', label: 'Cash Out' },
           { key: 'advanced', label: 'AI Agent' },
@@ -188,8 +190,9 @@ function Dashboard() {
       </div>
 
       {/* Section Content */}
-      {activeSection === 'markets' && <MarketList privacyMode={privacyMode} />}
+      {activeSection === 'markets' && <MarketList privacyMode={privacyMode} userWallet={solanaAddress} />}
       {activeSection === 'positions' && <PositionList />}
+      {activeSection === 'calls' && <CallsList userWallet={solanaAddress} />}
       {activeSection === 'transfer' && <TransferMethodSelector />}
       {activeSection === 'cashout' && <CardOrder />}
       {activeSection === 'advanced' && (

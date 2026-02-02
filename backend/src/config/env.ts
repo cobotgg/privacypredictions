@@ -73,6 +73,10 @@ export const config = {
 
   // Range Compliance
   rangeApiKey: optionalEnv('RANGE_API_KEY'),
+
+  // Light Protocol (ZK Compression)
+  lightProtocolEnabled: optionalEnv('LIGHT_PROTOCOL_ENABLED', 'false') === 'true',
+  photonRpcUrl: optionalEnv('PHOTON_RPC_URL'),
 };
 
 // Validate config on import
@@ -91,4 +95,5 @@ export function validateConfig(): void {
   console.log(`  - ShadowWire: ${config.shadowwireEnabled ? 'Enabled' : 'Disabled'}`);
   console.log(`  - SilentSwap: Enabled (integrator: ${config.silentswapIntegratorId})`);
   console.log(`  - Range Compliance: ${config.rangeApiKey ? 'Enabled' : 'Not configured'}`);
+  console.log(`  - Light Protocol: ${config.lightProtocolEnabled ? 'Enabled' : 'Disabled (mock mode)'}`);
 }

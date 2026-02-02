@@ -13,6 +13,8 @@ import shadowwireRouter from './routes/shadowwire.js';
 import privacycashRouter from './routes/privacycash.js';
 import silentswapRouter from './routes/silentswap.js';
 import complianceRouter from './routes/compliance.js';
+import callsRouter from './routes/calls.js';
+import attestationRouter from './routes/attestation.js';
 
 const app = express();
 
@@ -80,6 +82,8 @@ app.use('/api/shadowwire', shadowwireRouter);
 app.use('/api/privacycash', privacycashRouter);
 app.use('/api/bridge', silentswapRouter);
 app.use('/api/compliance', complianceRouter);
+app.use('/api/calls', callsRouter);
+app.use('/api/attestation', attestationRouter);
 
 // Error handling
 app.use(
@@ -141,6 +145,21 @@ app.listen(config.port, () => {
   console.log('  GET  /api/compliance/status - Range compliance status');
   console.log('  GET  /api/compliance/screen/address - Screen address');
   console.log('  POST /api/compliance/screen/transaction - Screen transaction');
+  console.log('  GET  /api/calls/status         - Encrypted calls (Inco + Light Protocol)');
+  console.log('  POST /api/calls/create         - Create encrypted prediction call');
+  console.log('  GET  /api/calls/market/:id     - Get calls for a market');
+  console.log('  GET  /api/calls/user/:wallet   - Get calls by user');
+  console.log('  POST /api/calls/:id/reveal     - Reveal call with payment (~$0.20)');
+  console.log('  POST /api/calls/market/:id/resolve - Resolve market & reveal calls');
+  console.log('');
+  console.log('  Light Protocol AI Attestations:');
+  console.log('  GET  /api/attestation/status     - Attestation service status');
+  console.log('  POST /api/attestation/create     - Create AI response attestation');
+  console.log('  POST /api/attestation/batch      - Batch create attestations');
+  console.log('  GET  /api/attestation/verify/:id - Verify attestation on-chain');
+  console.log('  GET  /api/attestation/:id        - Get attestation by ID');
+  console.log('  POST /api/attestation/ai/research - Research market with attestation');
+  console.log('  POST /api/attestation/ai/analyze  - Analyze market with attestation');
   console.log('');
   console.log('='.repeat(60));
 });
