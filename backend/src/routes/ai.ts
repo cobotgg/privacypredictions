@@ -16,6 +16,7 @@ import {
   getArciumStatus,
   getMxePublicKey,
 } from '../services/arcium-client.js';
+import { createAIResponseAttestation } from '../services/light-attestation.js';
 import { config } from '../config/env.js';
 import type { ApiResponse, AIAnalysis } from '../types/index.js';
 
@@ -267,6 +268,37 @@ router.post('/research', async (req, res) => {
       }
     }
 
+    // Create Light Protocol on-chain attestation for every AI response
+    let lightAttestation = null;
+    try {
+      const attestationPrompt = `Market: ${marketId}\nQuestion: ${actualQuestion}`;
+      const attestationResult = await createAIResponseAttestation(
+        attestationPrompt,
+        result.response,
+        'gpt-4-turbo-preview'
+      );
+
+      lightAttestation = {
+        success: attestationResult.success,
+        attestationId: attestationResult.attestationId,
+        dataHash: attestationResult.dataHash,
+        txSignature: attestationResult.txSignature,
+        timestamp: attestationResult.timestamp,
+        explorerUrl: attestationResult.txSignature
+          ? `https://explorer.solana.com/tx/${attestationResult.txSignature}?cluster=devnet`
+          : null,
+        error: attestationResult.error,
+      };
+
+      console.log(`[AI Research] Light Protocol attestation created: ${attestationResult.attestationId}`);
+    } catch (attestError: any) {
+      console.error(`[AI Research] Light attestation failed: ${attestError.message}`);
+      lightAttestation = {
+        success: false,
+        error: attestError.message,
+      };
+    }
+
     res.json({
       success: true,
       data: {
@@ -277,6 +309,7 @@ router.post('/research', async (req, res) => {
           queryHash: encryptedQueryData?.queryHash || null,
         },
         zkProof,
+        lightProtocolAttestation: lightAttestation,
       },
     });
   } catch (error: any) {

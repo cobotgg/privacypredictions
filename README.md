@@ -628,6 +628,28 @@ OPENAI_MODEL=gpt-4-turbo-preview
 
 See [backend/.env.example](backend/.env.example) for complete configuration reference.
 
+### Frontend Environment Setup
+
+Create a `.env` file in the `frontend` directory:
+
+```bash
+cp frontend/.env.example frontend/.env
+```
+
+Configure the following variables:
+
+```env
+# Frontend Environment Variables
+
+# Backend API URL - leave empty to use Vite proxy (recommended for dev)
+VITE_API_URL=
+
+# Solana RPC URL (Helius recommended for mainnet)
+VITE_SOLANA_RPC_URL=https://mainnet.helius-rpc.com/?api-key=YOUR_HELIUS_API_KEY
+```
+
+**Note:** The frontend uses Vite, so all environment variables must be prefixed with `VITE_` to be accessible in the browser.
+
 ---
 
 ## Usage

@@ -25,7 +25,7 @@ import {
 
 // Solana connection for transactions (mainnet for real payments)
 // Use Helius RPC which supports CORS from browser
-const SOLANA_RPC = import.meta.env.VITE_SOLANA_RPC || 'https://mainnet.helius-rpc.com/?api-key=36f73cf0-b00e-41ea-b16e-3f00b44aafee';
+const SOLANA_RPC = import.meta.env.VITE_SOLANA_RPC_URL || 'https://mainnet.helius-rpc.com/?api-key=36f73cf0-b00e-41ea-b16e-3f00b44aafee';
 
 interface CallsListProps {
   userWallet?: string;
